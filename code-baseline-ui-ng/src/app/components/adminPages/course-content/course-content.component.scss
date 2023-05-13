@@ -1,0 +1,45 @@
+@import '~quill/dist/quill.snow.css';
+
+.heightAuto{
+    height: auto !important
+}   
+.quillOutput{
+    height: 350px;
+    overflow: auto;
+    width: 100%;
+}
+.textLimit{
+    font-size: small;
+}
+.cardHeaderText{
+font-size: large;
+}
+.cardCardHeader{
+    display: flex;    
+    justify-content: space-between;
+}
+.imageCardBody{
+    display: flex;    
+    justify-content: space-between;
+}
+.imageHoverZoom {
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.imageHoverZoom img {
+    width: 100%;
+    transition: 0.5s all ease-in-out;
+}
+.cardImageClipboard{
+    display: flex;
+    justify-content: center;
+    border: 1px solid;
+    border-radius: 15px;
+    background-color: aliceblue;
+    margin: 1px;
+}
+
+.imageHoverZoom:hover img {
+    transform: scale(1.5);
+}

@@ -1,0 +1,109 @@
+ul, .menuUL {
+    list-style-type: none;
+  }
+  
+  .menuUL {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .caret {
+    cursor: pointer;
+    -webkit-user-select: none; /* Safari 3.1+ */
+    -moz-user-select: none; /* Firefox 2+ */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none;
+  }
+  
+  .caret::before {
+    content: "\25B6";
+    color: black;
+    display: inline-block;
+    margin-right: 6px;
+  }
+  
+  .caret-down::before {
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Safari */
+    transform: rotate(90deg);  
+  }
+  
+  .nested {
+    display: none;
+  }
+  
+  .active {
+    display: block;
+  }
+  .fullWidth{
+    width: -webkit-fill-available;
+  }
+  .btn-xs {
+    padding: .25rem .4rem;
+    font-size: .875rem;
+    line-height: .7;
+    border-radius: .2rem;
+  }
+  .displaySpaceBetween{
+    display: flex;
+    justify-content: space-between;
+  }
+  .fontUnset{
+    font-weight: unset !important;
+  }
+  .buttonsForMenuWitChild{
+    margin-left: 10px;
+    margin-bottom: 2px;
+  }
+  .modalStyle{
+    margin: 50px;
+  }
+
+  .parentTitleSpan{
+    font-weight: 700 !important;
+  }
+  .parentCategoryName{
+    font-weight: 500 !important;
+    margin-left: 15px;
+  }
+  .buttonGroupSpan{
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: x-small;
+  }
+  .buttonGroupDiv{
+    display: grid;
+    justify-content: flex-start;
+  }
+  .menuNameCenter{
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .divCombinedGroup{
+    display: flex;
+  }
+  .contentButtonGroupDiv{
+    display: grid;
+    justify-content: flex-start;
+    margin-left: 10px;
+  }
+  .divMenuHavingChildren{
+    margin-top: -30px !important;
+    justify-content: flex-end;
+  }
+  .cardCardHeader{
+    display: flex;    
+    justify-content: space-between;
+}
+.divCourseName{
+  display: grid;
+  justify-content: center;
+}
+.divCourseNameSmall{
+  font-weight: bold;
+  font-size: x-small;
+}
+.backGroundColourOnHover:hover{
+  background-color: #ACE2FF;
+}

@@ -1,0 +1,96 @@
+
+<div class="card">
+    <div class="card-header">
+      <button class="btn btn-primary" (click)="addNewParentMenu()" type="button">Add New Parent Menu</button>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <div class=" cardCardHeader">
+            <div class="cardHeaderText">
+              Menu Tree
+            </div>
+            <button type="button" class="btn btn-sm btn-secondary" (click)="expandCollapseMenu()">Toggle Menu</button>
+          </div>
+        </li>
+      <li class="list-group-item">
+        <div id="courseMenuSubMenu" #courseMenuSubMenu>
+        </div>
+      </li>      
+      <li class="list-group-item">
+        <ul>
+          <li>How to use Menu- Sub Menu feature</li>
+          <li>Create Menu - submenu</li>
+          <li>Only Menu with Category Course can have Course tiles and Course Content</li>
+          <li>Only Menu without child can have Course Tiles - (Course Menus)</li>
+          <li>Click on Add/Edit/View Course Tiles Button from Selected Menu</li>
+          <li>Click on Add New Course Tile Button, Add Child Tiles if needed</li>
+          <li>Only Course Tile (Course Menu) without child can have content</li>
+          <li>Click Add/Edit/View Content Button on Course Menu - will navigate to Content Page </li>
+          <li>After Navigted on Course Content Page: You can create Course Content</li>
+          <span>Currently in course content page, you can use editor, you can directly add images, link, codes and save.</span>
+        </ul>
+      </li>      
+    </ul>
+  </div>
+
+
+<div
+  class="modal modalStyle"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog modal-lg content" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">{{addUpdateOperation}} Menu</h5>
+            <button class="close btn btn-light" (click)="closePopup()" aria-label="Close">
+                <i class="bi bi-x-lg"></i>
+            </button>
+          </div>
+      <div class="modal-body">
+        <form [formGroup]="menuFormGroup" (ngSubmit)="onFormSubmit()">
+            <div class="mb3">
+                <label>Name</label>
+                <input type="text" 
+                class="form-control"
+                formControlName="name"
+                >
+                <div  class="text-danger">
+                    {{showFormControlErrors('name')}}                    
+                </div>                
+            </div>
+            <div class="mb3">
+                <label>Description</label>
+                <textarea class="form-control"
+                formControlName="description"></textarea>
+                <div  class="text-danger">
+                    {{showFormControlErrors('description')}}                    
+                </div>
+            </div>
+            
+            <div class="mb3">
+                <label>Category</label>
+                <select class="form-select"
+                formControlName="categories"
+                aria-label="categories">                    
+                    <option selected [value]="-1">--- select category ---</option>
+                    <option *ngFor="let item of categoriesList$ | async" [value]="item.id">{{ item.categoryName }}</option>
+                  </select>
+                <div  class="text-danger">
+                    {{showFormControlErrors('categories')}}                    
+                </div>
+            </div>            
+            <br>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" 
+                        (click)="closePopup()">
+                  Close
+                </button>
+                <button class="btn btn-success" type="submit" [disabled]="!menuFormGroup.valid">{{addUpdateOperation}} Post</button>
+              </div>
+        </form>  
+      </div>
+      
+    </div>
+  </div>
+</div>

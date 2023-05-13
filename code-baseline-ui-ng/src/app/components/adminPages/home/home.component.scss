@@ -1,0 +1,15 @@
+.mainClass{
+    margin-left: 200px !important;
+}
+
+@media only screen and (min-width: 992px) {
+    .mainClassNM{
+        margin-left: 200px !important;
+    }
+ }
+
+ @media only screen and (min-width: 50px) and (max-width: 991px) {
+    .mainClass{
+        margin-left: 0px !important;
+    }
+ }

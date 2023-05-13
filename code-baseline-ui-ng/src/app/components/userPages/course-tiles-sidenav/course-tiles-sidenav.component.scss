@@ -1,0 +1,71 @@
+.sidebar-nav {
+  width: 198px;
+}
+.sidebar-link {
+  display: flex;
+  align-items: center;
+}
+.sidebar-link .right-icon {
+  display: inline-flex;
+}
+.sidebar-link[aria-expanded="true"] .right-icon {
+  transform: rotate(180deg);
+}
+.cursorPointer{
+  cursor: pointer !important;
+}
+.noBorderLeftRightTop{
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 0px;
+}
+.noBorderOnlyTop{
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 0px;
+  border-top: 1px solid !important;
+  border: 1px solid rgba(255, 0, 0, 0.2) !important;
+}
+.capitalizeText{
+  text-transform: capitalize;
+}
+.flexCenter{
+  display: flex;
+  justify-content: center;
+}
+.flexGrid{
+  display: grid;
+  justify-content: center;
+}
+.border-secondary-opacity {
+  --bs-border-opacity: 0.2;
+  border-color: rgba(var(--bs-secondary-rgb), var(--bs-border-opacity)) !important;
+}
+.sideNavBorderColour{
+  border-color: rgb(64 64 64) !important;
+}
+@media (max-width: 719px) {
+    #sidebar{
+        top: 112px;
+      }
+}
+@media (min-width: 520px) {
+  body {
+    overflow: auto !important;
+  }
+  main {
+    margin-left: var(--Courseoffcanvas-width);
+  }
+ 
+  /* this is to remove the backdrop */
+  .offcanvas-backdrop::before {
+    display: none;
+  }
+  .sidebar-nav {
+    -webkit-transform: none;
+    transform: none;
+    visibility: visible !important;
+    height: calc(100% - var(20px)) !important;
+    top: 112px !important;
+  }
+}

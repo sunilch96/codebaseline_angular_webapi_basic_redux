@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h3>Sign Up</h3>
+            <hr>
+        </div>
+        <form [formGroup]="signUpForm" (ngSubmit)="onFormSubmit()">
+            <div class="mb-3">
+                <label>UserName</label>
+                <input type="text" class="form-control" formControlName="userName">
+                <div  class="text-danger">{{showFormControlErrors('userName')}}</div>
+            </div>
+            <div class="mb-3">
+                <label>Email</label>
+                <input type="text" class="form-control" formControlName="email">
+                <div  class="text-danger">{{showFormControlErrors('email')}}</div>
+            </div>
+            <div class="mb-3">
+                <label>Password</label>
+                <input type="text" class="form-control" formControlName="password">
+                <div  class="text-danger">{{showFormControlErrors('password')}}</div>
+            </div>
+            <button class="btn btn-primary" [disabled]="!signUpForm.valid">Register</button>
+        </form>
+    </div>
+</div>

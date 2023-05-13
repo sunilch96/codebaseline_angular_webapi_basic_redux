@@ -1,0 +1,79 @@
+   <router-outlet></router-outlet>
+
+   <!-- offcanvas -->
+   <div
+   class="offcanvas offcanvas-start sidebar-nav bg-dark mt-2  border sideNavBorderColour"
+   tabindex="-1"
+   id="sidebar"
+ >
+   <div class="offcanvas-body p-0">
+     <nav class="navbar-dark">
+      <div class="flexGrid">
+        <h6 class="text-light flexCenter">Learn</h6>
+        <h5 class="text-light ps-1 flexCenter">{{menuCourseTiles? menuCourseTiles.name :''}}</h5>
+      </div>
+       <div id="sideNavDivContainer">
+        <!-- <ul class="navbar-nav">
+          <li>
+            <a href="#" class="nav-link px-3 border border-secondary rounded-0">Page 1</a>
+          </li>
+           <li>
+             <a class="nav-link px-3 sidebar-link"
+               data-bs-toggle="collapse" href="#layouts1" >             
+               <span>Layouts</span>
+               <span class="ms-auto">
+                 <span class="right-icon">
+                   <i class="bi bi-chevron-down"></i>
+                 </span>
+               </span>
+             </a>
+             <div class="collapse show" id="layouts1">
+               <ul class="navbar-nav ps-3">
+                 <li>
+                   <a href="#" class="nav-link px-3">                   
+                     Dashboard
+                   </a>
+                 </li>
+  
+                 <li>
+                  <a class="nav-link px-3 sidebar-link"
+                    data-bs-toggle="collapse" href="#layouts2" >             
+                    <span>Angular</span>
+                    <span class="ms-auto">
+                      <span class="right-icon">
+                        <i class="bi bi-chevron-down"></i>
+                      </span>
+                    </span>
+                  </a>
+                  <div class="collapse show" id="layouts2">
+                    <ul class="navbar-nav ps-3">
+                      <li>
+                        <a href="#" class="nav-link px-3">                   
+                          Ang 1
+                        </a>
+                      </li>
+       
+                      <li>
+                       <a href="#" class="nav-link px-3">                   
+                         Ang 1
+                       </a>
+                     </li>
+                    </ul>
+                  </div>
+                </li>
+               </ul>
+             </div>
+           </li>
+           <li>
+             <a href="#" class="nav-link px-3">
+               <span class="me-2"><i class="bi bi-book-fill"></i></span>
+               <span>Pages</span>
+             </a>
+           </li>
+           <li class="border-top border-secondary"></li>         
+         </ul> -->
+       </div>
+     </nav>
+   </div>
+ </div>
+ <!-- offcanvas -->

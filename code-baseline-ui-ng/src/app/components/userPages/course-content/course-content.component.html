@@ -1,0 +1,28 @@
+<div class="card mt-1 courseContentDivCss border-0">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item" >
+            <div style="display: flex; justify-content: space-between;" *ngIf="courseContentData">
+                <button type="button" class="btn btn-success" *ngIf="courseContentData?.htmlContent">Previous</button>
+                <h4>{{menuCourseTiles?.courseTile?.name}}</h4>
+                <button type="button" class="btn btn-success" *ngIf="courseContentData?.htmlContent">Next</button>
+            </div>
+        </li>
+
+        <li class="list-group-item" >
+            <div id="courseContentDiv" [innerHTML]="courseContentData.htmlContent" *ngIf="courseContentData?.htmlContent"></div>
+            <span  *ngIf="!courseContentData">No Content Found</span>
+        </li>
+        <li class="list-group-item" *ngIf="courseContentData">
+            <div style="display: flex; justify-content: space-between;" >
+                <button type="button" class="btn btn-success">Previous</button>
+                <button type="button" class="btn btn-success">Next</button>
+            </div>
+        </li>
+        <li class="list-group-item" >
+            <div style="display: grid; justify-content: center;">
+                <span>some more details about courses</span>
+                <span>Our teachers and experience</span>
+            </div>            
+        </li>
+    </ul>
+  </div>

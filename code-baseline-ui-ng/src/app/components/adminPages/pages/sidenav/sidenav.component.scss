@@ -1,0 +1,54 @@
+
+  :root {
+    --offcanvas-width: 270px;
+    --topNavbarHeight: 56px;
+  }
+  .sidebar-nav {
+    width: 200px;
+    top: 56px;
+  }
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+  }
+  .sidebar-link .right-icon {
+    display: inline-flex;
+  }
+  .sidebar-link[aria-expanded="true"] .right-icon {
+    transform: rotate(180deg);
+  }
+
+  .sideNavShow{
+    transform: none !important;
+      visibility: visible !important;
+}  
+.disabled {
+  pointer-events:none; //This makes it not clickable
+  opacity:0.6;         //This grays it out to look disabled
+}
+  @media (min-width: 992px) {
+    .card-body{
+      background-color: black;
+    }
+    main {
+      margin-left: var(--offcanvas-width);
+    }
+    /* this is to remove the backdrop */
+    .offcanvas-backdrop::before {
+      display: none !important;
+    }
+    .sidebar-nav {
+      -webkit-transform: none !important;
+      transform: none !important;
+      visibility: visible !important;
+      height: calc(100% - var(--topNavbarHeight));
+    }
+  }
+
+@media only screen and (min-width: 992px) {
+  
+ }
+
+ @media only screen and (min-width: 50px) and (max-width: 991px) {
+  
+ }

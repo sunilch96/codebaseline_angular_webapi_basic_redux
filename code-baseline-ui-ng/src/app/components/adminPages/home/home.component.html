@@ -1,0 +1,5 @@
+<app-topnav></app-topnav>
+<app-sidenav [ifScreenSize]="ifScreenSize"></app-sidenav>
+<main class="mt-5 pt-3 mainClass" ngClass = "ifScreenSize ? mainClass : mainClassNM">
+    <router-outlet></router-outlet>
+</main>

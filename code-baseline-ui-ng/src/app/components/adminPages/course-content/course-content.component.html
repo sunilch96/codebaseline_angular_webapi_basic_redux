@@ -1,0 +1,192 @@
+<div class="card mb-3">
+    <div class="card-header">
+        Add Course content.
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngIf="menuCourseTiles">
+        <small>For Menu :&nbsp;&nbsp;</small> 
+        <span class="bg-light">
+            &nbsp;&nbsp;
+            Id : <b>{{menuCourseTiles.menuId}}</b>&nbsp;&nbsp;
+            Name : <b>{{menuCourseTiles.name}}</b>&nbsp;&nbsp;
+            Description : <b>{{menuCourseTiles.description}}</b>
+            &nbsp;&nbsp;
+        </span>        
+      </li>
+      <li class="list-group-item" *ngIf="menuCourseTiles?.courseTile as courseTileDetails">
+        <small>For Course :&nbsp;&nbsp;</small> 
+        <span class="bg-light">
+            &nbsp;&nbsp;
+            Id : <b>{{courseTileDetails.courseId}}</b>&nbsp;&nbsp;
+            Name : <b>{{courseTileDetails.name}}</b>&nbsp;&nbsp;
+            Description : <b>{{courseTileDetails.description}}</b>
+            &nbsp;&nbsp;
+        </span>        
+      </li>
+      <ul>
+        <li>How to use Course Content feature</li>
+        <li>After Navigted on Course Content Page: You can create Course Content</li>
+        <span>Currently in course content page, you can use editor, you can directly add images, link, codes and save.</span>
+      </ul>
+    </ul>
+  </div>
+
+<div>
+    <ul class="nav nav-tabs" id="courseContentTabs" role="tablist" >
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="content-tab" data-bs-toggle="tab" data-bs-target="#content-tab-pane"
+           type="button" role="tab" aria-controls="content-tab-pane" aria-selected="true">Add/Edit Content</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="images-tab" data-bs-toggle="tab" data-bs-target="#images-tab-pane" 
+          type="button" role="tab" aria-controls="images-tab-pane" aria-selected="false">Content Images</button>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="heightAuto tab-pane fade show active mt-2 enableDisableContentTab" id="content-tab-pane" 
+        role="tabpanel" aria-labelledby="content-tab" tabindex="0" >
+            <div class="card">
+                <div class="card-header cardCardHeader">
+                    <div class="cardHeaderText">
+                        Add Content for Selected Course
+                    </div>
+                    <div class="btn-group" role="group" aria-label="Content page buttons">
+                        <button class="btn btn-sm btn-warning" type="button" (click)="navigateBackToCourse()">Back</button>
+                        <button class="btn btn-sm btn-primary" type="button" (click)="onContentFormSubmit()">Submit</button>
+                    </div>                    
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <form [formGroup]="contentForm" class="heightAuto">
+                            <label for="contentEditor">                               
+                                    <small>
+                                        <i class="text text-danger textLimit" >
+                                            Editor Content Limit: {{maxEditorLength/1000}}K words. (Current Count: {{editorCurrentLength}} )</i>
+                                    </small>
+                                    <span class="text text-danger ms-2 textLimit" *ngIf="contentErrorMessage">
+                                        <b>{{contentErrorMessage}}</b>
+                                    </span>
+                            </label>
+                            <quill-editor                    
+                            formControlName="contentEditor"
+                            class="quill-editor"
+                            (onContentChanged)="maxLength($event)"></quill-editor>
+                    </form>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="form-group">
+                        <button class="btn btn-warning" (click)="navigateBackToCourse()" >Back</button>
+                        <button class="btn btn-primary ms-3"(click)="onContentFormSubmit()">Submit</button>
+                        <span class="text text-danger ms-2" *ngIf="contentErrorMessage">{{contentErrorMessage}}</span>
+                    </div> 
+                  </li>
+                  <li class="list-group-item">
+                    <div class="form-group">
+                        <h6>Content Editor Output : Generated Html</h6>
+                        <textarea class="bg-light quillOutput" (change)="onEditorTextAreaChange($event)">
+                            {{contentForm.get('contentEditor')?.value}}
+                        </textarea>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+        </div>
+
+        <div class="tab-pane fade mt-2" id="images-tab-pane" role="tabpanel" aria-labelledby="images-tab" tabindex="0">
+            <div class="card mb-3">
+                <div class="card-header cardCardHeader">
+                    <div class="cardHeaderText">
+                        Add Images for Content
+                    </div>
+                    <div class="btn-group" role="group" aria-label="Content page buttons">
+                        <button class="btn btn-sm btn-warning" type="button" routerLink="/admin/menu" >Back</button>
+                        <button class="btn btn-sm btn-primary" type="button" (click)="addContentImage()">Add</button>
+                    </div>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <div class="card" style="width: 18rem;">
+                        <div class="imageHoverZoom">
+                            <img class="card-img-top" 
+                            src="https://images.unsplash.com/photo-1579353977828-2a4eab540b9a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" 
+                            alt="Content Image"
+                            data-toggle="tooltip" data-placement="top" title="Copy Image Url to clipboard"
+                            (click)="copyImageUrlToClipboard('url','clipboardSpan_img1')" >
+                        </div>
+                        <small class="text-success cardImageClipboard"id="clipboardSpan_img1" [hidden]="true" >Copied to clipboard</small>
+                        <div class="card-body imageCardBody">
+                            <div style="display: grid;">
+                                <small class="bg-light">Dimension : <b>1920X3345</b></small>
+                                <small class="bg-light">Size : <b>54 KB</b></small>
+                                <small class="bg-light">Added : <b>13-sept-2033 12.30 PM</b></small>
+                                <small class="bg-light">Updated : <b>13-sept-2033 12.30 PM</b></small>
+                            </div>
+                            <div class="btn-group-vertical" role="group" aria-label="Content page buttons">
+                                <button class="btn btn-sm btn-secondary" type="button" (click)="copyImageUrlToClipboard('url', 'clipboardSpan_img1')" title="Copy Image Url to clipboard">
+                                    <i class="bi bi-clipboard"></i>
+                                </button>
+                                <button class="btn btn-sm btn-warning" type="button" title="Edit this item" (click)="editContentImage('')">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
+                                <button class="btn btn-sm btn-danger" type="button" (click)="deleteContentImage('')" title="Delete this item">
+                                    <i class="bi bi-trash3"></i>
+                                </button>
+                            </div>
+                        </div>
+                      </div>
+                  </li>
+                </ul>
+              </div>
+        </div>        
+      </div>    
+</div>
+
+<div
+  class="modal modalStyle"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog modal-lg content" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">{{addUpdateOperation}} Content Image</h5>
+            <button class="close btn btn-light" (click)="closePopup()" aria-label="Close">
+                <i class="bi bi-x-lg"></i>
+            </button>
+          </div>
+      <div class="modal-body">
+        <form [formGroup]="contentImageFormGroup" (ngSubmit)="onContentImageFormSubmit()">
+            <div class="mb3">
+                <label>Name</label>
+                <input type="text" 
+                class="form-control"
+                formControlName="name"
+                >
+                <div  class="text-danger">
+                    {{showFormControlErrors('name')}}                    
+                </div>                
+            </div>
+            <div class="mb3">
+                <label>Description</label>
+                <textarea class="form-control"
+                formControlName="description"></textarea>
+                <div  class="text-danger">
+                    {{showFormControlErrors('description')}}                    
+                </div>
+            </div>
+
+            <br>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" 
+                        (click)="closePopup()">
+                  Close
+                </button>
+                <button class="btn btn-success" type="submit" [disabled]="!contentImageFormGroup.valid">{{addUpdateOperation}} Image</button>
+              </div>
+        </form>  
+      </div>
+      
+    </div>
+  </div>
+</div>
